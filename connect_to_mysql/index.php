@@ -1,5 +1,20 @@
 <?php
     include("../connect_to_mysql/database.php");
+
+    $username = "andrei12";
+    $password = "password1";
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    
+    $sql = "INSERT INTO users (user, password) VALUES ('$username', '$hash')";
+
+    try {
+        mysqli_query($conn, $sql);
+        echo "User is now registered";
+    } catch(mysqli_sql_exception) {
+        echo "Could not register user";
+    }
+
+    mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +25,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello</h1><br>
+    <form action="../connect_to_mysql/index.php">
+
+    </form>
 
 </body>
 </html>
